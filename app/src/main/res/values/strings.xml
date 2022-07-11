@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Ecommerce</string>
+    <string name="login">Login</string>
+    <string name="full_name">Full Name</string>
+    <string name="please_input_full_name">Please input full name</string>
+    <string name="mobile_no">Mobile No.</string>
+    <string name="please_input_mobile_no">Please input mobile no.</string>
+    <string name="email_id">Email Id</string>
+    <string name="please_input_email_id">Please input email id</string>
+    <string name="password">Password</string>
+    <string name="please_input_password">Please input password</string>
+    <string name="i_have_an_account">I have an account</string>
+    <string name="register">Register</string>
+    <string name="i_don_t_have_an_account">I don\'t have an account</string>
+</resources>

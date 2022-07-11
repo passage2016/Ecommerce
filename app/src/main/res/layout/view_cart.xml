@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:padding="5dp"
+    android:background="@drawable/shape_category_card"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_cart_im"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_shopping_cart_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_cart_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Products Name"
+        android:textSize="15sp"
+        android:textColor="@color/orange"
+        app:layout_constraintStart_toEndOf="@id/iv_cart_im"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_cart_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Price"
+        android:textSize="15sp"
+        android:textColor="@color/orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_cart_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@id/iv_cart_im"
+        app:layout_constraintTop_toBottomOf="@id/tv_cart_name"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_cart_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textSize="15sp"
+        android:textColor="@color/orange"
+        app:layout_constraintStart_toEndOf="@id/iv_cart_im"
+        app:layout_constraintTop_toBottomOf="@id/tv_cart_description"/>
+
+    <LinearLayout
+        android:id="@+id/ll_cart_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ib_cart_sub"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_exposure_neg_1_24"
+            android:background="@color/sky_blue"/>
+        <TextView
+            android:id="@+id/tv_cart_count"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:text="1"
+            android:textColor="@color/orange"
+            android:gravity="center"
+            android:background="@drawable/shape_category_card"/>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ib_cart_add"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_exposure_plus_1_24"
+            android:background="@color/sky_blue"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
