@@ -1,4 +1,4 @@
-package com.learning.mvpregistrationapp.presenter.register
+package com.example.ecommerce.presenter.register
 
 import com.example.ecommerce.model.remote.data.user.User
 

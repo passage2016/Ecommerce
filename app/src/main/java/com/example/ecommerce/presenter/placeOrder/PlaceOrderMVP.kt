@@ -1,7 +1,5 @@
-package com.learning.mvpregistrationapp.presenter.category
+package com.example.ecommerce.presenter.placeOrder
 
-import com.example.ecommerce.model.remote.data.category.Category
-import com.example.ecommerce.model.remote.data.category.CategoryResponse
 import com.example.ecommerce.model.remote.data.placeOrderRequest.PlaceOrderRequest
 
 

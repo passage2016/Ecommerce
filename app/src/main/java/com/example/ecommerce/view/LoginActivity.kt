@@ -3,22 +3,18 @@ package com.example.ecommerce.view
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import com.example.ecommerce.R
 import com.example.ecommerce.model.remote.UserVolleyHandler
 import com.example.ecommerce.model.remote.data.user.User
-import com.google.android.material.progressindicator.CircularProgressIndicator
-import com.learning.mvpregistrationapp.presenter.login.LoginMVP
-import com.learning.mvpregistrationapp.presenter.login.LoginPresenter
-import org.json.JSONObject
+import com.example.ecommerce.presenter.login.LoginMVP
+import com.example.ecommerce.presenter.login.LoginPresenter
 
-class LoginActivity: AppCompatActivity(), LoginMVP.LoginView {
+class LoginActivity : AppCompatActivity(), LoginMVP.LoginView {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
     lateinit var presenter: LoginPresenter
@@ -27,7 +23,7 @@ class LoginActivity: AppCompatActivity(), LoginMVP.LoginView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         val btnLogin: Button = findViewById(R.id.btn_login)
-        val etLoginEmail: EditText =  findViewById(R.id.et_login_email)
+        val etLoginEmail: EditText = findViewById(R.id.et_login_email)
         val etLoginPassword: EditText = findViewById(R.id.et_login_password)
         val tvLoginRegister: TextView = findViewById(R.id.tv_login_register)
 

@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_order_detail_address_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="address_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_order_detail_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="address"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_address_title"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_address_title" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_order_detail_bill_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="bill_amount"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_address"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_address" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_order_detail_payment_method"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="payment_method"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_bill_amount"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_bill_amount" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_order_detail_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="order_status"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_payment_method"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_payment_method" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_order_detail_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="order_date"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_status"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_status" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,13 @@
 package com.example.ecommerce.view.cart
 
 import android.content.Context
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -16,15 +17,17 @@ import com.example.ecommerce.model.local.CartItem
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_IMAGE_URL
 
 
-class CartItemAdapter(private val context: Context, val infoArrayList:ArrayList<CartItem>):
+class CartItemAdapter(private val context: Context, val infoArrayList: ArrayList<CartItem>) :
     RecyclerView.Adapter<CartItemAdapter.CartItemHolder>() {
     private lateinit var cartDao: CartDao
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemHolder {
-        val mView: View = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_cart, parent, false)
+        val mView: View =
+            LayoutInflater.from(parent.getContext()).inflate(R.layout.view_cart, parent, false)
         cartDao = CartDao(parent.getContext())
         return CartItemHolder(mView)
     }
+
     override fun onBindViewHolder(holder: CartItemHolder, position: Int) {
         holder.apply {
             val info = infoArrayList.get(position)
@@ -38,20 +41,23 @@ class CartItemAdapter(private val context: Context, val infoArrayList:ArrayList<
                 .load(BASE_IMAGE_URL + info.productImageUrl)
                 .into(ivCartIm)
 
-            var cart =cartDao.getCartItemByProductId(info.productId.toInt())
-            if(cart != null && cart!!.count > 0){
+            var cart = cartDao.getCartItemByProductId(info.productId.toInt())
+            if (cart != null && cart!!.count > 0) {
                 tvCartCount.text = cart!!.count.toString()
 
             }
 
             ibCartSub.setOnClickListener {
                 if (cart != null) {
-                    if(cart!!.count < 2){
+                    if (cart!!.count < 2) {
 
 
                         cart!!.cartId?.let { it1 ->
-                            if(cartDao.deleteCartItem(it1)){
-                                Log.e("Delete", "Delete cart id = ${cart!!.cartId} name = ${cart!!.productName} success")
+                            if (cartDao.deleteCartItem(it1)) {
+                                Log.e(
+                                    "Delete",
+                                    "Delete cart id = ${cart!!.cartId} name = ${cart!!.productName} success"
+                                )
                                 notifyItemRemoved(position)
                                 infoArrayList.removeAt(position)
                                 notifyItemRangeChanged(position, infoArrayList.size)
@@ -86,8 +92,7 @@ class CartItemAdapter(private val context: Context, val infoArrayList:ArrayList<
     }
 
 
-
-    inner class CartItemHolder(val view: View): RecyclerView.ViewHolder(view){
+    inner class CartItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val ivCartIm: ImageView = view.findViewById(R.id.iv_cart_im)
         val tvCartName: TextView = view.findViewById(R.id.tv_cart_name)
         val tvCartTotalPrice: TextView = view.findViewById(R.id.tv_cart_total_price)

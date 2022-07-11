@@ -1,7 +1,6 @@
 package com.example.ecommerce.view.home
 
 import android.content.Context
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,15 +15,15 @@ import com.example.ecommerce.model.remote.data.category.Category
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_IMAGE_URL
 
 
-class ShopCategoryAdapter(private val context: Context, val infoArrayList:ArrayList<Category>):
+class ShopCategoryAdapter(private val context: Context, val infoArrayList: ArrayList<Category>) :
     RecyclerView.Adapter<ShopCategoryAdapter.CategoryHolder>() {
-//    private lateinit var communicator: Communicator
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryHolder {
-//        val layoutInflater = LayoutInflater.from(parent.context)
-        val mView: View = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_home, parent, false)
+        val mView: View =
+            LayoutInflater.from(parent.getContext()).inflate(R.layout.view_home, parent, false)
         return CategoryHolder(mView)
     }
+
     override fun onBindViewHolder(holder: CategoryHolder, position: Int) {
         holder.apply {
             val info = infoArrayList.get(position)
@@ -46,8 +45,7 @@ class ShopCategoryAdapter(private val context: Context, val infoArrayList:ArrayL
     }
 
 
-
-    inner class CategoryHolder(val view: View): RecyclerView.ViewHolder(view){
+    inner class CategoryHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val ivHomeIm: ImageView = view.findViewById(R.id.iv_home_im)
         val tvHomeTitle: TextView = view.findViewById(R.id.tv_home_title)
     }

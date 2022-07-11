@@ -1,7 +1,6 @@
 package com.example.ecommerce.model.remote
 
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -35,7 +34,7 @@ class UserVolleyHandler(private val context: Context) {
                 Log.i("tag", message.toString())
                 val status = response.getInt("status")
                 Log.e("tag", "message is $message")
-                if(status == 0){
+                if (status == 0) {
                     callback.onSuccess(message.toString())
                 } else {
                     callback.onFailure(message.toString())
@@ -64,7 +63,7 @@ class UserVolleyHandler(private val context: Context) {
                 Log.i("tag", message.toString())
                 val status = response.getInt("status")
                 Log.e("tag", "message is $message")
-                if(status == 0){
+                if (status == 0) {
                     val responseUser = response.getJSONObject("user")
                     user.userID = responseUser.getString("user_id")
                     user.fullName = responseUser.getString("full_name")

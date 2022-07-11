@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@+id/home_dest">
     <fragment
         android:id="@+id/home_dest"
@@ -31,8 +31,8 @@
             app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="category_id"
-            app:argType="string"
-            android:defaultValue="1"/>
+            android:defaultValue="1"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/product_detail_dest"
@@ -41,8 +41,8 @@
         tools:layout="@layout/fragment_product_detail">
         <argument
             android:name="product_id"
-            app:argType="string"
-            android:defaultValue="1"/>
+            android:defaultValue="1"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/cart_dest"
@@ -93,12 +93,12 @@
             app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="address_title"
-            app:argType="string"
-            android:defaultValue="default address itle"/>
+            android:defaultValue="default address itle"
+            app:argType="string" />
         <argument
             android:name="address_address"
-            app:argType="string"
-            android:defaultValue="default address address"/>
+            android:defaultValue="default address address"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -122,8 +122,8 @@
         tools:layout="@layout/fragment_order_detail">
         <argument
             android:name="order_id"
-            app:argType="string"
-            android:defaultValue="1"/>
+            android:defaultValue="1"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -154,9 +154,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-
-
-
 
 
 </navigation>

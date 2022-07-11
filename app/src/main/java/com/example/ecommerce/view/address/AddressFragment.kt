@@ -1,38 +1,26 @@
 package com.example.ecommerce.view.address
 
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerce.R
 import com.example.ecommerce.model.remote.AddressVolleyHandler
-import com.example.ecommerce.model.remote.CategoryVolleyHandler
 import com.example.ecommerce.model.remote.data.address.AddressResponse
 import com.example.ecommerce.model.remote.data.address.Addresse
-import com.example.ecommerce.model.remote.data.category.Category
-import com.example.ecommerce.model.remote.data.category.CategoryResponse
-import com.example.ecommerce.view.LoginActivity
+import com.example.ecommerce.presenter.getAddress.GetAddressMVP
+import com.example.ecommerce.presenter.getAddress.GetAddressPresenter
+import com.example.ecommerce.view.LoginActivity.Companion.ACCOUNT_INFO_FILE_NAME
 import com.example.ecommerce.view.LoginActivity.Companion.USER_ID
-import com.example.ecommerce.view.cart.CartFragmentDirections
-import com.example.ecommerce.view.home.ShopCategoryAdapter
-import com.example.ecommerce.view.home.SubCategoryFragment
-import com.learning.mvpregistrationapp.presenter.category.CategoryPresenter
-import com.learning.mvpregistrationapp.presenter.category.GetAddressMVP
-import com.learning.mvpregistrationapp.presenter.category.GetAddressPresenter
 
-class AddressFragment: Fragment(), GetAddressMVP.GetAddressView {
+class AddressFragment : Fragment(), GetAddressMVP.GetAddressView {
 
     private lateinit var presenter: GetAddressPresenter
     lateinit var adapter: AddresseAdapter
@@ -55,7 +43,8 @@ class AddressFragment: Fragment(), GetAddressMVP.GetAddressView {
         super.onViewCreated(view, savedInstanceState)
         currentView = view
         presenter = GetAddressPresenter(AddressVolleyHandler(view.context), this)
-        sharedPreferences = this.requireActivity().getSharedPreferences(LoginActivity.ACCOUNT_INFO_FILE_NAME, AppCompatActivity.MODE_PRIVATE)
+        sharedPreferences =
+            this.requireActivity().getSharedPreferences(ACCOUNT_INFO_FILE_NAME, MODE_PRIVATE)
         editor = sharedPreferences.edit()
         val userId = sharedPreferences.getString(USER_ID, "-1")
         val btnAddressAdd = view.findViewById<Button>(R.id.btn_address_add)
@@ -68,9 +57,7 @@ class AddressFragment: Fragment(), GetAddressMVP.GetAddressView {
         }
 
 
-
     }
-
 
 
     override fun setResult(addressResponse: AddressResponse?) {
@@ -78,7 +65,8 @@ class AddressFragment: Fragment(), GetAddressMVP.GetAddressView {
             categoryList = addressResponse.addresses
             currentView?.let {
                 adapter = AddresseAdapter(currentView.context, categoryList)
-                currentView.findViewById<RecyclerView>(R.id.rv_address).layoutManager = LinearLayoutManager(currentView.context)
+                currentView.findViewById<RecyclerView>(R.id.rv_address).layoutManager =
+                    LinearLayoutManager(currentView.context)
                 currentView.findViewById<RecyclerView>(R.id.rv_address).adapter = adapter
             }
         }

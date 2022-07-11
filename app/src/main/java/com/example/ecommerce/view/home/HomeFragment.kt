@@ -1,7 +1,9 @@
 package com.example.ecommerce.view.home
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,14 +11,14 @@ import com.example.ecommerce.R
 import com.example.ecommerce.model.remote.CategoryVolleyHandler
 import com.example.ecommerce.model.remote.data.category.Category
 import com.example.ecommerce.model.remote.data.category.CategoryResponse
-import com.learning.mvpregistrationapp.presenter.category.CategoryMVP
-import com.learning.mvpregistrationapp.presenter.category.CategoryPresenter
+import com.example.ecommerce.presenter.category.CategoryMVP
+import com.example.ecommerce.presenter.category.CategoryPresenter
 
-class HomeFragment: Fragment(), CategoryMVP.CategoryView {
+class HomeFragment : Fragment(), CategoryMVP.CategoryView {
     private lateinit var presenter: CategoryPresenter
     lateinit var adapter: ShopCategoryAdapter
     lateinit var categoryList: ArrayList<Category>
-    lateinit var currentView:View
+    lateinit var currentView: View
 
 
     override fun onCreateView(
@@ -37,13 +39,13 @@ class HomeFragment: Fragment(), CategoryMVP.CategoryView {
     }
 
 
-
     override fun setResult(categoryResponse: CategoryResponse?) {
         categoryResponse?.let {
             categoryList = categoryResponse.categories
             currentView?.let {
                 adapter = ShopCategoryAdapter(currentView.context, categoryList)
-                currentView.findViewById<RecyclerView>(R.id.rv_home).layoutManager = GridLayoutManager(currentView.context, 2)
+                currentView.findViewById<RecyclerView>(R.id.rv_home).layoutManager =
+                    GridLayoutManager(currentView.context, 2)
                 currentView.findViewById<RecyclerView>(R.id.rv_home).adapter = adapter
             }
         }

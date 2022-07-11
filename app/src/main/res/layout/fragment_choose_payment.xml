@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_choose_payment_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
-        android:text="Please Choose Payment Method"
-        android:textSize="20sp"
-        android:textColor="@color/orange"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:text="Please Choose Payment Method"
+        android:textColor="@color/orange"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/rg_choose_payment"
@@ -49,10 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
-        android:text="Confirm"
         android:background="@drawable/shape_button"
-        app:layout_constraintTop_toBottomOf="@id/rg_choose_payment"
+        android:text="Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/rg_choose_payment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

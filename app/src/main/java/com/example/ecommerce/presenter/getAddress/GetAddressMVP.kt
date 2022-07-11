@@ -1,8 +1,6 @@
-package com.learning.mvpregistrationapp.presenter.category
+package com.example.ecommerce.presenter.getAddress
 
 import com.example.ecommerce.model.remote.data.address.AddressResponse
-import com.example.ecommerce.model.remote.data.category.Category
-import com.example.ecommerce.model.remote.data.category.CategoryResponse
 
 
 interface GetAddressMVP {

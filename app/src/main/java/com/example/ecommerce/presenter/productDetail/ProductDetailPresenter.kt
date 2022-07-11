@@ -1,11 +1,7 @@
-package com.learning.mvpregistrationapp.presenter.category
+package com.example.ecommerce.presenter.productDetail
 
-import com.example.ecommerce.model.remote.CategoryVolleyHandler
 import com.example.ecommerce.model.remote.ProductDetailVolleyHandler
-import com.example.ecommerce.model.remote.SubCategoryVolleyHandler
-import com.example.ecommerce.model.remote.data.category.CategoryResponse
 import com.example.ecommerce.model.remote.data.productDetail.ProductDetailResponse
-import com.example.ecommerce.model.remote.data.subCategory.SubCategoryResponse
 import com.learning.mvpregistrationapp.model.remote.OperationalCallback
 
 class ProductDetailPresenter(
@@ -13,7 +9,7 @@ class ProductDetailPresenter(
     private val loginView: ProductDetailMVP.ProductDetailView
 ) : ProductDetailMVP.ProductDetailPresenter {
 
-    override fun getProductDetail(productId:String): String {
+    override fun getProductDetail(productId: String): String {
         loginView.onLoad(true)
         val message = volleyHandler.getProductDetailFromApi(productId,
             object : OperationalCallback {

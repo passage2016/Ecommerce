@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_category_card"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/shape_category_card">
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_review_suer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
         android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RatingBar
         android:id="@+id/rb_review"
@@ -19,8 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
-        android:rating="3"
         android:progressTint="@color/orange"
+        android:rating="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,15 +30,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title"
-        android:textSize="20sp"
         android:textColor="@color/orange"
-        app:layout_constraintTop_toBottomOf="@id/tv_review_suer"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_review_suer" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_review_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Review"
-        app:layout_constraintTop_toBottomOf="@id/tv_review_title"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_review_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

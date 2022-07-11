@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navOptions
@@ -14,18 +12,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerce.R
-import com.example.ecommerce.model.remote.CategoryVolleyHandler
 import com.example.ecommerce.model.remote.ProductsVolleyHandler
 import com.example.ecommerce.model.remote.SubCategoryVolleyHandler
-import com.example.ecommerce.model.remote.data.category.CategoryResponse
 import com.example.ecommerce.model.remote.data.products.Product
 import com.example.ecommerce.model.remote.data.products.ProductsResponse
 import com.example.ecommerce.model.remote.data.subCategory.SubCategoryResponse
 import com.example.ecommerce.model.remote.data.subCategory.Subcategory
-import com.learning.mvpregistrationapp.presenter.category.*
+import com.example.ecommerce.presenter.products.ProductsMVP
+import com.example.ecommerce.presenter.products.ProductsPresenter
+import com.example.ecommerce.presenter.subCategory.SubCategoryMVP
+import com.example.ecommerce.presenter.subCategory.SubCategoryPresenter
 
-class SubCategoryFragment: Fragment(), SubCategoryMVP.SubCategoryView, ProductsMVP.ProductsView {
-    private val args : SubCategoryFragmentArgs by navArgs()
+class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView, ProductsMVP.ProductsView {
+    private val args: SubCategoryFragmentArgs by navArgs()
     lateinit var categoryID: String
     lateinit var subCategoryID: String
     private lateinit var subCategoryPresenter: SubCategoryPresenter
@@ -34,7 +33,7 @@ class SubCategoryFragment: Fragment(), SubCategoryMVP.SubCategoryView, ProductsM
     lateinit var subCategoryAdapter: SubCategoryAdapter
     lateinit var productList: ArrayList<Product>
     lateinit var productAdapter: ProductsAdapter
-    lateinit var currentView:View
+    lateinit var currentView: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,8 +51,6 @@ class SubCategoryFragment: Fragment(), SubCategoryMVP.SubCategoryView, ProductsM
         subCategoryPresenter = SubCategoryPresenter(SubCategoryVolleyHandler(view.context), this)
         categoryID = args.categoryId
         subCategoryPresenter.getSubCategory(categoryID)
-
-
 
 
         val options = navOptions {
@@ -74,10 +71,13 @@ class SubCategoryFragment: Fragment(), SubCategoryMVP.SubCategoryView, ProductsM
             currentView?.let {
                 Log.e("subCategoryList", "${subCategoryList}")
                 subCategoryAdapter = SubCategoryAdapter(this, subCategoryList)
-                currentView.findViewById<RecyclerView>(R.id.rv_sub_category).layoutManager = GridLayoutManager(currentView.context, 2)
-                currentView.findViewById<RecyclerView>(R.id.rv_sub_category).adapter = subCategoryAdapter
-                productsPresenter = ProductsPresenter(ProductsVolleyHandler(currentView.context), this)
-                if(subCategoryList.size > 0){
+                currentView.findViewById<RecyclerView>(R.id.rv_sub_category).layoutManager =
+                    GridLayoutManager(currentView.context, 2)
+                currentView.findViewById<RecyclerView>(R.id.rv_sub_category).adapter =
+                    subCategoryAdapter
+                productsPresenter =
+                    ProductsPresenter(ProductsVolleyHandler(currentView.context), this)
+                if (subCategoryList.size > 0) {
                     subCategoryID = subCategoryList.get(0).subcategory_id
                     productsPresenter.getProducts(subCategoryID)
                 }
@@ -88,7 +88,7 @@ class SubCategoryFragment: Fragment(), SubCategoryMVP.SubCategoryView, ProductsM
 
     }
 
-    fun setSubCategoryId(subCategoryId: String){
+    fun setSubCategoryId(subCategoryId: String) {
         productsPresenter = ProductsPresenter(ProductsVolleyHandler(currentView.context), this)
         subCategoryID = subCategoryId
         productsPresenter.getProducts(subCategoryID)
@@ -100,7 +100,8 @@ class SubCategoryFragment: Fragment(), SubCategoryMVP.SubCategoryView, ProductsM
             currentView?.let {
                 Log.e("productList", "${productList}")
                 productAdapter = ProductsAdapter(currentView.context, productList)
-                currentView.findViewById<RecyclerView>(R.id.rv_products).layoutManager = LinearLayoutManager(currentView.context)
+                currentView.findViewById<RecyclerView>(R.id.rv_products).layoutManager =
+                    LinearLayoutManager(currentView.context)
                 currentView.findViewById<RecyclerView>(R.id.rv_products).adapter = productAdapter
             }
         }

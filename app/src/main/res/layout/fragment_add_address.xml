@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:padding="16dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_add_address_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title:"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_add_address_title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:hint="please input address title"
         android:background="@drawable/shape_input_field"
-        app:layout_constraintTop_toBottomOf="@id/tv_add_address_title"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:hint="please input address title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_address_title" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_add_address_address"
@@ -30,27 +29,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Address:"
-        app:layout_constraintTop_toBottomOf="@id/et_add_address_title"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_add_address_title" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_add_address_address"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/shape_input_field"
         android:ems="10"
         android:hint="please input address"
-        android:background="@drawable/shape_input_field"
-        app:layout_constraintTop_toBottomOf="@id/tv_add_address_address"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_address_address" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Add Address"
         android:background="@drawable/shape_button"
-        app:layout_constraintTop_toBottomOf="@id/et_add_address_address"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:text="Add Address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_add_address_address" />
 </androidx.constraintlayout.widget.ConstraintLayout>

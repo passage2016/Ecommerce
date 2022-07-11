@@ -1,9 +1,8 @@
-package com.learning.mvpregistrationapp.presenter.register
+package com.example.ecommerce.presenter.register
 
 import com.example.ecommerce.model.remote.UserVolleyHandler
 import com.example.ecommerce.model.remote.data.user.User
 import com.learning.mvpregistrationapp.model.remote.OperationalCallback
-import com.learning.mvpregistrationapp.presenter.register.RegistrationMVP
 
 class RegistrationPresenter(
     private val volleyHandler: UserVolleyHandler,

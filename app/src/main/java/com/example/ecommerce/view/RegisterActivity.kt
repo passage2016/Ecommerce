@@ -10,18 +10,18 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.ecommerce.R
 import com.example.ecommerce.model.remote.UserVolleyHandler
 import com.example.ecommerce.model.remote.data.user.User
-import com.learning.mvpregistrationapp.presenter.register.RegistrationMVP
-import com.learning.mvpregistrationapp.presenter.register.RegistrationPresenter
+import com.example.ecommerce.presenter.register.RegistrationMVP
+import com.example.ecommerce.presenter.register.RegistrationPresenter
 
-class RegisterActivity: AppCompatActivity(), RegistrationMVP.RegistrationView {
+class RegisterActivity : AppCompatActivity(), RegistrationMVP.RegistrationView {
     lateinit var presenter: RegistrationPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         val btRegister: Button = findViewById(R.id.btn_register)
-        val etRegisterEmail: EditText =  findViewById(R.id.et_register_email)
-        val etRegisterNAME: EditText =  findViewById(R.id.et_register_name)
-        val etRegisterPHONE: EditText =  findViewById(R.id.et_register_phone)
+        val etRegisterEmail: EditText = findViewById(R.id.et_register_email)
+        val etRegisterNAME: EditText = findViewById(R.id.et_register_name)
+        val etRegisterPHONE: EditText = findViewById(R.id.et_register_phone)
         val etRegisterPassword: EditText = findViewById(R.id.et_register_password)
         val tvRegisterLogin: TextView = findViewById(R.id.tv_register_login)
 

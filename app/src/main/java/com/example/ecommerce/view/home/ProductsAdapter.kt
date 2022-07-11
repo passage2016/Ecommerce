@@ -17,15 +17,17 @@ import com.example.ecommerce.model.remote.data.products.Product
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_IMAGE_URL
 
 
-class ProductsAdapter(private val context: Context, val infoArrayList:ArrayList<Product>):
+class ProductsAdapter(private val context: Context, val infoArrayList: ArrayList<Product>) :
     RecyclerView.Adapter<ProductsAdapter.ProductsHolder>() {
     private lateinit var cartDao: CartDao
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsHolder {
-        val mView: View = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_products, parent, false)
+        val mView: View =
+            LayoutInflater.from(parent.getContext()).inflate(R.layout.view_products, parent, false)
         cartDao = CartDao(parent.getContext())
         return ProductsHolder(mView)
     }
+
     override fun onBindViewHolder(holder: ProductsHolder, position: Int) {
         holder.apply {
             val info = infoArrayList.get(position)
@@ -39,8 +41,8 @@ class ProductsAdapter(private val context: Context, val infoArrayList:ArrayList<
                 .load(BASE_IMAGE_URL + info.product_image_url)
                 .into(ivProductsIm)
 
-            var cart =cartDao.getCartItemByProductId(info.product_id.toInt())
-            if(cart != null && cart!!.count > 0){
+            var cart = cartDao.getCartItemByProductId(info.product_id.toInt())
+            if (cart != null && cart!!.count > 0) {
                 tvProductsAddToCart.visibility = View.GONE
                 llProductsCount.visibility = View.VISIBLE
                 tvProductsCount.text = cart!!.count.toString()
@@ -49,10 +51,13 @@ class ProductsAdapter(private val context: Context, val infoArrayList:ArrayList<
 
             ibProductsSub.setOnClickListener {
                 if (cart != null) {
-                    if(cart!!.count < 2){
+                    if (cart!!.count < 2) {
                         cart!!.cartId?.let { it1 ->
-                            if(cartDao.deleteCartItem(it1)){
-                                Log.e("Delete", "Delete cart id = ${cart!!.cartId} name = ${cart!!.productName} success")
+                            if (cartDao.deleteCartItem(it1)) {
+                                Log.e(
+                                    "Delete",
+                                    "Delete cart id = ${cart!!.cartId} name = ${cart!!.productName} success"
+                                )
                             }
 
                         }
@@ -87,9 +92,9 @@ class ProductsAdapter(private val context: Context, val infoArrayList:ArrayList<
                     1
                 )
                 cartItem.cartId = cartDao.addCartItem(cartItem)
-                if(cartItem.cartId != null && cartItem.cartId!! > 0){
+                if (cartItem.cartId != null && cartItem.cartId!! > 0) {
                     tvProductsCount.text = "1"
-                    cart =cartDao.getCartItemByProductId(info.product_id.toInt())
+                    cart = cartDao.getCartItemByProductId(info.product_id.toInt())
                 }
 
             }
@@ -109,8 +114,7 @@ class ProductsAdapter(private val context: Context, val infoArrayList:ArrayList<
     }
 
 
-
-    inner class ProductsHolder(val view: View): RecyclerView.ViewHolder(view){
+    inner class ProductsHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val ivProductsIm: ImageView = view.findViewById(R.id.iv_products_im)
         val tvProductsName: TextView = view.findViewById(R.id.tv_products_name)
         val rbProduct: RatingBar = view.findViewById(R.id.rb_product)

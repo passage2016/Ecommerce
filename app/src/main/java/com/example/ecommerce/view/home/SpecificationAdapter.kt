@@ -9,13 +9,15 @@ import com.example.ecommerce.R
 import com.example.ecommerce.model.remote.data.productDetail.Specification
 
 
-class SpecificationAdapter(val infoArrayList:ArrayList<Specification>):
+class SpecificationAdapter(val infoArrayList: ArrayList<Specification>) :
     RecyclerView.Adapter<SpecificationAdapter.SpecificationHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecificationHolder {
-        val mView: View = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_specification, parent, false)
+        val mView: View = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.view_specification, parent, false)
         return SpecificationHolder(mView)
     }
+
     override fun onBindViewHolder(holder: SpecificationHolder, position: Int) {
         holder.apply {
             val info = infoArrayList.get(position)
@@ -29,8 +31,9 @@ class SpecificationAdapter(val infoArrayList:ArrayList<Specification>):
         return infoArrayList.size
     }
 
-    inner class SpecificationHolder(val view: View): RecyclerView.ViewHolder(view){
+    inner class SpecificationHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val tvSpecificationTitle: TextView = view.findViewById(R.id.tv_specification_title)
-        val tvSpecificationSpecification: TextView = view.findViewById(R.id.tv_specification_specification)
+        val tvSpecificationSpecification: TextView =
+            view.findViewById(R.id.tv_specification_specification)
     }
 }

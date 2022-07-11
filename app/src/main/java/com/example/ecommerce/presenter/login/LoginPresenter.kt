@@ -1,4 +1,4 @@
-package com.learning.mvpregistrationapp.presenter.login
+package com.example.ecommerce.presenter.login
 
 import com.example.ecommerce.model.remote.UserVolleyHandler
 import com.example.ecommerce.model.remote.data.user.User

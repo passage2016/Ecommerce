@@ -1,7 +1,6 @@
 package com.example.ecommerce.model.remote
 
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -11,16 +10,10 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.ecommerce.model.remote.data.address.AddressResponse
-import com.example.ecommerce.model.remote.data.subCategory.SubCategoryResponse
-import com.example.ecommerce.model.remote.data.user.User
 import com.google.gson.Gson
-import com.google.gson.JsonParser
-import com.learning.mvpregistrationapp.model.remote.Constants
 import com.learning.mvpregistrationapp.model.remote.Constants.ADD_ADDRESS_END_POINT
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_URL
 import com.learning.mvpregistrationapp.model.remote.Constants.GET_ADDRESS_END_POINT
-import com.learning.mvpregistrationapp.model.remote.Constants.LOGIN_END_POINT
-import com.learning.mvpregistrationapp.model.remote.Constants.REGISTRATION_END_POINT
 import com.learning.mvpregistrationapp.model.remote.OperationalCallback
 import org.json.JSONObject
 

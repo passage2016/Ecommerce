@@ -8,20 +8,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerce.R
 import com.example.ecommerce.model.remote.ProductsVolleyHandler
 import com.example.ecommerce.model.remote.data.subCategory.Subcategory
-import com.learning.mvpregistrationapp.presenter.category.ProductsPresenter
+import com.example.ecommerce.presenter.products.ProductsPresenter
 
 
-class SubCategoryAdapter(private val subCategoryFragment: SubCategoryFragment, val infoArrayList:ArrayList<Subcategory>):
+class SubCategoryAdapter(
+    private val subCategoryFragment: SubCategoryFragment,
+    val infoArrayList: ArrayList<Subcategory>
+) :
     RecyclerView.Adapter<SubCategoryAdapter.SubCategoryHolder>() {
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubCategoryHolder {
-//        val layoutInflater = LayoutInflater.from(parent.context)
-//        communicator = context as Communicator
-        val mView: View = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_sub_category, parent, false)
+        val mView: View = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.view_sub_category, parent, false)
         return SubCategoryHolder(mView)
     }
+
     override fun onBindViewHolder(holder: SubCategoryHolder, position: Int) {
         holder.apply {
             val info = infoArrayList.get(position)
@@ -30,7 +32,6 @@ class SubCategoryAdapter(private val subCategoryFragment: SubCategoryFragment, v
 
 
             itemView.setOnClickListener {
-//                communicator.passSubCategoryId(info.subcategory_id)
                 val productsPresenter = subCategoryFragment.context?.let { it1 ->
                     ProductsVolleyHandler(
                         it1
@@ -47,8 +48,7 @@ class SubCategoryAdapter(private val subCategoryFragment: SubCategoryFragment, v
     }
 
 
-
-    inner class SubCategoryHolder(val view: View): RecyclerView.ViewHolder(view){
+    inner class SubCategoryHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val tvSubCategory: TextView = view.findViewById(R.id.tv_sub_category)
     }
 }

@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:padding="5dp"
     android:background="@drawable/shape_category_card"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="5dp">
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_products_im"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_shopping_cart_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_products_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Products Name"
-        android:textSize="15sp"
         android:textColor="@color/orange"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@id/iv_products_im"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <RatingBar
@@ -30,8 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
-        android:rating="3"
         android:progressTint="@color/orange"
+        android:rating="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,54 +44,58 @@
         android:text="Description"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@id/iv_products_im"
-        app:layout_constraintTop_toBottomOf="@id/tv_products_name"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_products_name" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_products_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price"
-        android:textSize="15sp"
         android:textColor="@color/orange"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@id/iv_products_im"
-        app:layout_constraintTop_toBottomOf="@id/tv_products_description"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_products_description" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_products_add_to_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add To Cart"
-        android:textSize="15sp"
         android:textColor="@color/sky_blue"
+        android:textSize="15sp"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/ll_products_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/ib_products_sub"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_baseline_exposure_neg_1_24"
-            android:background="@color/sky_blue"/>
+            android:background="@color/sky_blue"
+            android:src="@drawable/ic_baseline_exposure_neg_1_24" />
+
         <TextView
             android:id="@+id/tv_products_count"
             android:layout_width="40dp"
             android:layout_height="20dp"
-            android:text="1"
-            android:textColor="@color/orange"
+            android:background="@drawable/shape_category_card"
             android:gravity="center"
-            android:background="@drawable/shape_category_card"/>
+            android:text="1"
+            android:textColor="@color/orange" />
+
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/ib_products_add"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_baseline_exposure_plus_1_24"
-            android:background="@color/sky_blue"/>
+            android:background="@color/sky_blue"
+            android:src="@drawable/ic_baseline_exposure_plus_1_24" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

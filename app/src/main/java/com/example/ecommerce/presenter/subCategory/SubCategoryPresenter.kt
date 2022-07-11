@@ -1,8 +1,6 @@
-package com.learning.mvpregistrationapp.presenter.category
+package com.example.ecommerce.presenter.subCategory
 
-import com.example.ecommerce.model.remote.CategoryVolleyHandler
 import com.example.ecommerce.model.remote.SubCategoryVolleyHandler
-import com.example.ecommerce.model.remote.data.category.CategoryResponse
 import com.example.ecommerce.model.remote.data.subCategory.SubCategoryResponse
 import com.learning.mvpregistrationapp.model.remote.OperationalCallback
 
@@ -11,7 +9,7 @@ class SubCategoryPresenter(
     private val loginView: SubCategoryMVP.SubCategoryView
 ) : SubCategoryMVP.SubCategoryPresenter {
 
-    override fun getSubCategory(categoryId:String): String {
+    override fun getSubCategory(categoryId: String): String {
         loginView.onLoad(true)
         val message = volleyHandler.getSubCategoryFromApi(categoryId,
             object : OperationalCallback {

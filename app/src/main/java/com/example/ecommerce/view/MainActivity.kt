@@ -1,32 +1,33 @@
 package com.example.ecommerce.view
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Resources
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
-import android.window.SplashScreen
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import com.example.ecommerce.R
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
-import com.example.ecommerce.R
-import com.example.ecommerce.view.home.SubCategoryFragment
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var appBarConfiguration:AppBarConfiguration
-
+    lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
+    lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,75 +35,99 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
+        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+
+
+        val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
+        navigationView.setNavigationItemSelectedListener{ menuItem->
+            when(menuItem.itemId){
+//                R.id.home_dest->{
+//                    Toast.makeText(this, "home_dest", Toast.LENGTH_SHORT).show()
+//                    drawerLayout.closeDrawer(GravityCompat.START)
+//                }
+//                R.id.cart_dest->{
+//                    Toast.makeText(this, "cart_dest", Toast.LENGTH_SHORT).show()
+//                    drawerLayout.closeDrawer(GravityCompat.START)
+//                }
+//                R.id.address_dest->{
+//                    Toast.makeText(this, "address_dest", Toast.LENGTH_SHORT).show()
+//                    drawerLayout.closeDrawer(GravityCompat.START)
+//                }
+//                R.id.order_dest->{
+//                    Toast.makeText(this, "order_dest", Toast.LENGTH_SHORT).show()
+//                    drawerLayout.closeDrawer(GravityCompat.START)
+//                }
+                R.id.mi_logout->{
+                    val intent: Intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+//                    drawerLayout.closeDrawer(GravityCompat.START)
+                }
+
+                else -> {
+                    menuItem.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
+                            || super.onOptionsItemSelected(menuItem)
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                }
+
+            }
+            true
+
+        }
+
+
+        val navView = navigationView.inflateHeaderView(R.layout.nav_view_header);
+
+        val tvNavHeaderName: TextView = navView.findViewById(R.id.tv_nav_header_name)
+        val tvNavHeaderEmail: TextView = navView.findViewById(R.id.tv_nav_header_email)
+        val tvNavHeaderPhone: TextView = navView.findViewById(R.id.tv_nav_header_phone)
+
+        sharedPreferences = getSharedPreferences(LoginActivity.ACCOUNT_INFO_FILE_NAME, MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+        tvNavHeaderName.text =sharedPreferences.getString(LoginActivity.NAME, LoginActivity.NAME)
+        tvNavHeaderEmail.text =sharedPreferences.getString(LoginActivity.EMAIL, LoginActivity.EMAIL)
+        tvNavHeaderPhone.text =sharedPreferences.getString(LoginActivity.PHONE, LoginActivity.PHONE)
 
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
 
         val navController = host.navController
-//
-        val drawerLayout : DrawerLayout? = findViewById(R.id.drawer_layout)
+        val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.home_dest, R.id.cart_dest, R.id.order_dest, R.id.address_dest),
-            drawerLayout)
-//
+            drawerLayout
+        )
         setupActionBar(navController, appBarConfiguration)
 //注释
-//        setupNavigationMenu(navController)
-//
-//
-//        navController.addOnDestinationChangedListener { _, destination, _ ->
-//            val dest: String = try {
-//                resources.getResourceName(destination.id)
-//            } catch (e: Resources.NotFoundException) {
-//                Integer.toString(destination.id)
-//            }
-//
-//            Toast.makeText(this@MainActivity, "Navigated to $dest",
-//                Toast.LENGTH_SHORT).show()
-//            Log.d("NavigationActivity", "Navigated to $dest")
-//        }
+
     }
 //
-//    private fun setupNavigationMenu(navController: NavController) {
-//
-//        val sideNavView = findViewById<NavigationView>(R.id.nav_view)
-//        sideNavView?.setupWithNavController(navController)
-//    }
-//
-//
-//        override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        val retValue = super.onCreateOptionsMenu(menu)
-//        val navigationView = findViewById<NavigationView>(R.id.nav_view)
-//        if (navigationView == null) {
-//            menuInflater.inflate(R.menu.menu_drawer_nav, menu)
-//            return true
-//        }
-//        return retValue
+
+
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu_drawer_nav, menu)
+//        return true
 //    }
 
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_drawer_nav, menu)
-        return true
-    }
-
-    private fun setupActionBar(navController: NavController,
-                               appBarConfig : AppBarConfiguration) {
+    private fun setupActionBar(
+        navController: NavController,
+        appBarConfig: AppBarConfiguration
+    ) {
         setupActionBarWithNavController(navController, appBarConfig)
     }
 
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.mi_logout){
-
-            val intent: Intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            return true
-        } else {
-            return item.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
-                    || super.onOptionsItemSelected(item)
+        if (item.itemId == android.R.id.home) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
         }
+        return super.onOptionsItemSelected(item)
 
     }
 

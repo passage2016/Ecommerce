@@ -3,8 +3,10 @@ package com.example.ecommerce.view.home
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import android.view.animation.AnimationUtils
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -17,15 +19,15 @@ import com.example.ecommerce.model.local.CartItem
 import com.example.ecommerce.model.remote.ProductDetailVolleyHandler
 import com.example.ecommerce.model.remote.data.productDetail.ProductDetailResponse
 import com.example.ecommerce.model.remote.data.productDetail.Specification
-import com.learning.mvpregistrationapp.model.remote.Constants
+import com.example.ecommerce.presenter.productDetail.ProductDetailMVP
+import com.example.ecommerce.presenter.productDetail.ProductDetailPresenter
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_IMAGE_URL
-import com.learning.mvpregistrationapp.presenter.category.*
 
 
-class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
-    private val args : ProductFragmentArgs by navArgs()
+class ProductFragment : Fragment(), ProductDetailMVP.ProductDetailView {
+    private val args: ProductFragmentArgs by navArgs()
     private lateinit var presenter: ProductDetailPresenter
-    lateinit var currentView:View
+    lateinit var currentView: View
     lateinit var productID: String
     private lateinit var cartDao: CartDao
     lateinit var uri: Uri
@@ -46,7 +48,6 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         cartDao = CartDao(view.context)
@@ -58,25 +59,35 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
     }
 
 
-
     override fun setResult(productDetailResponse: ProductDetailResponse?) {
 
         productDetailResponse?.let {
             val product = productDetailResponse.product
             currentView?.let {
                 Log.e("product", "${product}")
-                val tvProductDetailName: TextView = currentView.findViewById(R.id.tv_product_detail_name)
+                val tvProductDetailName: TextView =
+                    currentView.findViewById(R.id.tv_product_detail_name)
                 val rbProductDetail: RatingBar = currentView.findViewById(R.id.rb_product_detail)
-                val tvProductDetailDescription: TextView = currentView.findViewById(R.id.tv_product_detail_description)
-                val ivProductDetailImageView: ImageView = currentView.findViewById(R.id.iv_product_detail_image_view)
-                val tvProductDetailPrice: TextView = currentView.findViewById(R.id.tv_product_detail_price)
-                val tvProductDetailAddToCart: TextView = currentView.findViewById(R.id.tv_product_detail_add_to_cart)
-                val llProductDetailCount: LinearLayout = currentView.findViewById(R.id.ll_product_detail_count)
-                val ibProductDetailSub: ImageButton = currentView.findViewById(R.id.ib_product_detail_sub)
-                val tvProductDetailCount: TextView = currentView.findViewById(R.id.tv_product_detail_count)
-                val ibProductDetailAdd: ImageButton = currentView.findViewById(R.id.ib_product_detail_add)
-                val rvProductDetailSpecifications: RecyclerView = currentView.findViewById(R.id.rv_product_detail_specifications)
-                val rvProductDetailReview: RecyclerView = currentView.findViewById(R.id.rv_product_detail_review)
+                val tvProductDetailDescription: TextView =
+                    currentView.findViewById(R.id.tv_product_detail_description)
+                val ivProductDetailImageView: ImageView =
+                    currentView.findViewById(R.id.iv_product_detail_image_view)
+                val tvProductDetailPrice: TextView =
+                    currentView.findViewById(R.id.tv_product_detail_price)
+                val tvProductDetailAddToCart: TextView =
+                    currentView.findViewById(R.id.tv_product_detail_add_to_cart)
+                val llProductDetailCount: LinearLayout =
+                    currentView.findViewById(R.id.ll_product_detail_count)
+                val ibProductDetailSub: ImageButton =
+                    currentView.findViewById(R.id.ib_product_detail_sub)
+                val tvProductDetailCount: TextView =
+                    currentView.findViewById(R.id.tv_product_detail_count)
+                val ibProductDetailAdd: ImageButton =
+                    currentView.findViewById(R.id.ib_product_detail_add)
+                val rvProductDetailSpecifications: RecyclerView =
+                    currentView.findViewById(R.id.rv_product_detail_specifications)
+                val rvProductDetailReview: RecyclerView =
+                    currentView.findViewById(R.id.rv_product_detail_review)
 
                 tvProductDetailName.text = product.product_name
                 rbProductDetail.rating = product.average_rating.toFloat()
@@ -86,7 +97,7 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
                 Glide.with(currentView)
                     .load(BASE_IMAGE_URL + product.images.get(index).image)
                     .into(ivProductDetailImageView)
-                ivProductDetailImageView.setOnTouchListener{_, event ->
+                ivProductDetailImageView.setOnTouchListener { _, event ->
 //                        if (event.action == MotionEvent.ACTION_DOWN) {
 //                            Log.e("event.x", event.x.toString())
 //                            touchDownX = event.x
@@ -110,10 +121,13 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
 //                        }
                     if (event.action == MotionEvent.ACTION_DOWN) {
                         Log.e("event.x", event.x.toString())
-                        if(event.x >300){
+                        if (event.x > 300) {
                             index = if (index == product.images.size - 1) 0 else index + 1
                             Log.e("index", index.toString())
-                            Log.e("product_image_url", BASE_IMAGE_URL + product.images.get(index).image)
+                            Log.e(
+                                "product_image_url",
+                                BASE_IMAGE_URL + product.images.get(index).image
+                            )
                             Glide.with(currentView)
                                 .load(BASE_IMAGE_URL + product.images.get(index).image)
                                 .into(ivProductDetailImageView)
@@ -122,7 +136,10 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
                         } else {
                             index = if (index == 0) product.images.size - 1 else index - 1
                             Log.e("index", index.toString())
-                            Log.e("product_image_url", BASE_IMAGE_URL + product.images.get(index).image)
+                            Log.e(
+                                "product_image_url",
+                                BASE_IMAGE_URL + product.images.get(index).image
+                            )
                             Glide.with(currentView)
                                 .load(BASE_IMAGE_URL + product.images.get(index).image)
                                 .into(ivProductDetailImageView)
@@ -134,8 +151,8 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
                     false
                 }
 
-                var cart =cartDao.getCartItemByProductId(product.product_id.toInt())
-                if(cart != null && cart!!.count > 0){
+                var cart = cartDao.getCartItemByProductId(product.product_id.toInt())
+                if (cart != null && cart!!.count > 0) {
                     tvProductDetailAddToCart.visibility = View.GONE
                     llProductDetailCount.visibility = View.VISIBLE
                     tvProductDetailCount.text = cart!!.count.toString()
@@ -143,10 +160,13 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
                 }
                 ibProductDetailSub.setOnClickListener {
                     if (cart != null) {
-                        if(cart!!.count < 2){
+                        if (cart!!.count < 2) {
                             cart!!.cartId?.let { it1 ->
-                                if(cartDao.deleteCartItem(it1)){
-                                    Log.e("Delete", "Delete cart id = ${cart!!.cartId} name = ${cart!!.productName} success")
+                                if (cartDao.deleteCartItem(it1)) {
+                                    Log.e(
+                                        "Delete",
+                                        "Delete cart id = ${cart!!.cartId} name = ${cart!!.productName} success"
+                                    )
                                 }
 
                             }
@@ -181,9 +201,9 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
                         1
                     )
                     cartItem.cartId = cartDao.addCartItem(cartItem)
-                    if(cartItem.cartId != null && cartItem.cartId!! > 0){
+                    if (cartItem.cartId != null && cartItem.cartId!! > 0) {
                         tvProductDetailCount.text = "1"
-                        cart =cartDao.getCartItemByProductId(product.product_id.toInt())
+                        cart = cartDao.getCartItemByProductId(product.product_id.toInt())
                     }
 
                 }
@@ -191,7 +211,8 @@ class ProductFragment: Fragment(), ProductDetailMVP.ProductDetailView {
 
                 specificationList = product.specifications
                 specificationAdapter = SpecificationAdapter(specificationList)
-                rvProductDetailSpecifications.layoutManager = LinearLayoutManager(currentView.context)
+                rvProductDetailSpecifications.layoutManager =
+                    LinearLayoutManager(currentView.context)
                 rvProductDetailSpecifications.adapter = specificationAdapter
             }
         }

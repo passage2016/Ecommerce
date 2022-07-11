@@ -6,16 +6,16 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ecommerce.R
 
-class SplashActivity: AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-              var intent: Intent = Intent(this, LoginActivity::class.java)
+            var intent: Intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2000)
+        }, 1000)
 
     }
 

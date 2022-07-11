@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="30dp">
+
     <TextView
         android:id="@+id/tv_login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_login_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/ic_baseline_shopping_cart_24"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_login_title"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_title" />
+
     <TextView
         android:id="@+id/tv_login_email"
         android:layout_width="wrap_content"
@@ -29,14 +31,16 @@
         android:layout_marginTop="20dp"
         android:text="@string/email_id"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_login_image"/>
+        app:layout_constraintTop_toBottomOf="@+id/iv_login_image" />
+
     <EditText
         android:id="@+id/et_login_email"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="@string/please_input_email_id"
         android:background="@drawable/shape_input_field"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_email"/>
+        android:hint="@string/please_input_email_id"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_email" />
+
     <TextView
         android:id="@+id/tv_login_password"
         android:layout_width="wrap_content"
@@ -44,36 +48,39 @@
         android:layout_marginTop="20dp"
         android:text="@string/password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_email"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_login_email" />
+
     <EditText
         android:id="@+id/et_login_password"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="@string/please_input_password"
         android:background="@drawable/shape_input_field"
+        android:hint="@string/please_input_password"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_password"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_password" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/login"
-        android:textSize="20sp"
-        android:textColor="@color/white"
         android:background="@drawable/shape_button"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_login_password"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_login_password" />
+
     <TextView
         android:id="@+id/tv_login_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/i_have_an_account"
-        android:textSize="20sp"
         android:textColor="@color/orange"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

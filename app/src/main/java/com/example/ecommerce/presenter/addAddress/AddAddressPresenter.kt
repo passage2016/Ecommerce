@@ -1,8 +1,6 @@
-package com.learning.mvpregistrationapp.presenter.category
+package com.example.ecommerce.presenter.addAddress
 
 import com.example.ecommerce.model.remote.AddressVolleyHandler
-import com.example.ecommerce.model.remote.CategoryVolleyHandler
-import com.example.ecommerce.model.remote.data.category.CategoryResponse
 import com.learning.mvpregistrationapp.model.remote.OperationalCallback
 
 class AddAddressPresenter(

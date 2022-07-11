@@ -1,11 +1,7 @@
-package com.learning.mvpregistrationapp.presenter.category
+package com.example.ecommerce.presenter.products
 
-import com.example.ecommerce.model.remote.CategoryVolleyHandler
 import com.example.ecommerce.model.remote.ProductsVolleyHandler
-import com.example.ecommerce.model.remote.SubCategoryVolleyHandler
-import com.example.ecommerce.model.remote.data.category.CategoryResponse
 import com.example.ecommerce.model.remote.data.products.ProductsResponse
-import com.example.ecommerce.model.remote.data.subCategory.SubCategoryResponse
 import com.learning.mvpregistrationapp.model.remote.OperationalCallback
 
 class ProductsPresenter(
