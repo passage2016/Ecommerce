@@ -16,6 +16,27 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/search_action"
+            app:destination="@+id/search_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/search_dest"
+        android:name="com.example.ecommerce.view.home.SearchProductFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_search_product">
+        <action
+            android:id="@+id/product_detail_action"
+            app:destination="@+id/product_detail_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/sub_category_dest"
@@ -36,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/product_detail_dest"
-        android:name="com.example.ecommerce.view.home.ProductFragment"
+        android:name="com.example.ecommerce.view.home.ProductDetailFragment"
         android:label="Cart"
         tools:layout="@layout/fragment_product_detail">
         <argument

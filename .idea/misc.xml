@@ -29,6 +29,9 @@
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/fragment_order.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/fragment_order_detail.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/fragment_product_detail.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/fragment_products.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/fragment_projects.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/fragment_search_project.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/fragment_sub_category.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/layout_picker.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/list_view_item.xml" value="0.25364583333333335" />
@@ -40,12 +43,14 @@
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/view_cart.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/view_home.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/view_order.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/view_product_deatil_image.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/view_products.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/view_specification.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/view_sub_category.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/layout/view_user_review.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/menu/menu.xml" value="0.1125" />
         <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/menu/menu_drawer_nav.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/15047/AndroidStudioProjects/Ecommerce/app/src/main/res/menu/menu_search.xml" value="0.25364583333333335" />
       </map>
     </option>
   </component>

@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import com.example.ecommerce.R
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -41,36 +42,18 @@ class MainActivity : AppCompatActivity() {
 
 
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
+
         navigationView.setNavigationItemSelectedListener{ menuItem->
             when(menuItem.itemId){
-//                R.id.home_dest->{
-//                    Toast.makeText(this, "home_dest", Toast.LENGTH_SHORT).show()
-//                    drawerLayout.closeDrawer(GravityCompat.START)
-//                }
-//                R.id.cart_dest->{
-//                    Toast.makeText(this, "cart_dest", Toast.LENGTH_SHORT).show()
-//                    drawerLayout.closeDrawer(GravityCompat.START)
-//                }
-//                R.id.address_dest->{
-//                    Toast.makeText(this, "address_dest", Toast.LENGTH_SHORT).show()
-//                    drawerLayout.closeDrawer(GravityCompat.START)
-//                }
-//                R.id.order_dest->{
-//                    Toast.makeText(this, "order_dest", Toast.LENGTH_SHORT).show()
-//                    drawerLayout.closeDrawer(GravityCompat.START)
-//                }
                 R.id.mi_logout->{
                     val intent: Intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
-//                    drawerLayout.closeDrawer(GravityCompat.START)
                 }
-
                 else -> {
                     menuItem.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
                             || super.onOptionsItemSelected(menuItem)
                     drawerLayout.closeDrawer(GravityCompat.START)
                 }
-
             }
             true
 
@@ -98,28 +81,19 @@ class MainActivity : AppCompatActivity() {
             setOf(R.id.home_dest, R.id.cart_dest, R.id.order_dest, R.id.address_dest),
             drawerLayout
         )
-        setupActionBar(navController, appBarConfiguration)
-//注释
-
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
-//
 
 
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.menu_drawer_nav, menu)
-//        return true
-//    }
-
-    private fun setupActionBar(
-        navController: NavController,
-        appBarConfig: AppBarConfiguration
-    ) {
-        setupActionBarWithNavController(navController, appBarConfig)
-    }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.e("onBackPressed", "${item.itemId}")
+        val current: Fragment? = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment)
+        current?.let {
+            Log.e("Fragment", "${it.id}")
+        }
         if (item.itemId == android.R.id.home) {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START)
@@ -131,9 +105,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.my_nav_host_fragment).navigateUp(appBarConfiguration)
-    }
 
+
+    override fun onSupportNavigateUp(): Boolean {
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return findNavController(R.id.my_nav_host_fragment).navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
 
 }

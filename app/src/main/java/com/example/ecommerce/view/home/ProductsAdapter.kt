@@ -17,7 +17,7 @@ import com.example.ecommerce.model.remote.data.products.Product
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_IMAGE_URL
 
 
-class ProductsAdapter(private val context: Context, val infoArrayList: ArrayList<Product>) :
+class ProductsAdapter(private val context: Context, val infoArrayList: ArrayList<Product>, val from: Int) :
     RecyclerView.Adapter<ProductsAdapter.ProductsHolder>() {
     private lateinit var cartDao: CartDao
 
@@ -103,8 +103,14 @@ class ProductsAdapter(private val context: Context, val infoArrayList: ArrayList
                 Log.e("product_id", "${info.product_id}")
                 val bundle = Bundle()
                 bundle.putString("product_id", info.product_id)
-                val action = SubCategoryFragmentDirections.productDetailAction(info.product_id)
-                it.findNavController().navigate(action)
+                if(from == 0){
+                    val action = SubCategoryFragmentDirections.productDetailAction(info.product_id)
+                    it.findNavController().navigate(action)
+                } else {
+                    val action = SearchProductFragmentDirections.productDetailAction(info.product_id)
+                    it.findNavController().navigate(action)
+                }
+
             }
         }
     }

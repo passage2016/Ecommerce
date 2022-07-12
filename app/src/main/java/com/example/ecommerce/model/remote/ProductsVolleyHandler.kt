@@ -11,6 +11,7 @@ import com.example.ecommerce.model.remote.data.products.ProductsResponse
 import com.google.gson.Gson
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_URL
 import com.learning.mvpregistrationapp.model.remote.Constants.PRODUCTS_END_POINT
+import com.learning.mvpregistrationapp.model.remote.Constants.SEARCH_PRODUCTS_END_POINT
 import com.learning.mvpregistrationapp.model.remote.OperationalCallback
 
 class ProductsVolleyHandler(private val context: Context) {
@@ -19,6 +20,26 @@ class ProductsVolleyHandler(private val context: Context) {
 
     fun getProductsFromApi(subCategoryId: String, callback: OperationalCallback): String {
         val url = BASE_URL + PRODUCTS_END_POINT + subCategoryId
+        Log.e("url", "${url}")
+        var message: String? = null
+
+
+        val request = object: StringRequest(Request.Method.GET, url,
+            Response.Listener {
+                val gson = Gson()
+                val productsResponse = gson.fromJson(it.toString(), ProductsResponse::class.java)
+                callback.onSuccess(productsResponse)
+                Log.e("tag", it.toString())
+            }, {
+                Log.e("tag", it.toString())
+            }){
+        }
+        requestQueue.add(request)
+        return message.toString()
+    }
+
+    fun searchProductsFromApi(query: String, callback: OperationalCallback): String {
+        val url = BASE_URL + SEARCH_PRODUCTS_END_POINT + query
         Log.e("url", "${url}")
         var message: String? = null
 

@@ -1,10 +1,11 @@
 package com.example.ecommerce.view.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerce.R
@@ -33,6 +34,7 @@ class HomeFragment : Fragment(), CategoryMVP.CategoryView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         currentView = view
+
         presenter = CategoryPresenter(CategoryVolleyHandler(view.context), this)
         presenter.getCategory()
 
@@ -51,6 +53,19 @@ class HomeFragment : Fragment(), CategoryMVP.CategoryView {
         }
 
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_search, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.mi_search) {
+            val action = HomeFragmentDirections.searchAction()
+            findNavController().navigate(action)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onLoad(isLoading: Boolean) {

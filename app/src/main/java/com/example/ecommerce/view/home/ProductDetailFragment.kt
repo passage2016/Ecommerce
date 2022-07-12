@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.ecommerce.R
 import com.example.ecommerce.model.local.CartDao
@@ -24,8 +25,8 @@ import com.example.ecommerce.presenter.productDetail.ProductDetailPresenter
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_IMAGE_URL
 
 
-class ProductFragment : Fragment(), ProductDetailMVP.ProductDetailView {
-    private val args: ProductFragmentArgs by navArgs()
+class ProductDetailFragment : Fragment(), ProductDetailMVP.ProductDetailView {
+    private val args: ProductDetailFragmentArgs by navArgs()
     private lateinit var presenter: ProductDetailPresenter
     lateinit var currentView: View
     lateinit var productID: String
@@ -70,8 +71,8 @@ class ProductFragment : Fragment(), ProductDetailMVP.ProductDetailView {
                 val rbProductDetail: RatingBar = currentView.findViewById(R.id.rb_product_detail)
                 val tvProductDetailDescription: TextView =
                     currentView.findViewById(R.id.tv_product_detail_description)
-                val ivProductDetailImageView: ImageView =
-                    currentView.findViewById(R.id.iv_product_detail_image_view)
+                val vpProductDetailImageView: ViewPager2 =
+                    currentView.findViewById(R.id.vp_product_detail_image_view)
                 val tvProductDetailPrice: TextView =
                     currentView.findViewById(R.id.tv_product_detail_price)
                 val tvProductDetailAddToCart: TextView =
@@ -94,62 +95,10 @@ class ProductFragment : Fragment(), ProductDetailMVP.ProductDetailView {
                 tvProductDetailDescription.text = product.description
                 tvProductDetailPrice.text = "${product.price}"
                 Log.e("product_image_url", BASE_IMAGE_URL + product.images.get(index).image)
-                Glide.with(currentView)
-                    .load(BASE_IMAGE_URL + product.images.get(index).image)
-                    .into(ivProductDetailImageView)
-                ivProductDetailImageView.setOnTouchListener { _, event ->
-//                        if (event.action == MotionEvent.ACTION_DOWN) {
-//                            Log.e("event.x", event.x.toString())
-//                            touchDownX = event.x
-//                            true
-//                        } else if (event.action == MotionEvent.ACTION_UP) {
-//                            Log.e("event.x", event.x.toString())
-//                            touchUpX = event.x
-//                            if (touchUpX - touchDownX > 100) {
-//                                index = if (index === 0) product.images.size - 1 else index - 1
-//                                Glide.with(currentView)
-//                                    .load(BASE_IMAGE_URL + product.images.get(index).image)
-//                                    .into(ivProductDetailImageView)
-//                            } else if (touchDownX - touchUpX > 100) {
-//                                index =
-//                                    if (index === product.images.size - 1) 0 else index + 1
-//                                Glide.with(currentView)
-//                                    .load(BASE_IMAGE_URL + product.images.get(index).image)
-//                                    .into(ivProductDetailImageView)
-//                            }
-//                            true
-//                        }
-                    if (event.action == MotionEvent.ACTION_DOWN) {
-                        Log.e("event.x", event.x.toString())
-                        if (event.x > 300) {
-                            index = if (index == product.images.size - 1) 0 else index + 1
-                            Log.e("index", index.toString())
-                            Log.e(
-                                "product_image_url",
-                                BASE_IMAGE_URL + product.images.get(index).image
-                            )
-                            Glide.with(currentView)
-                                .load(BASE_IMAGE_URL + product.images.get(index).image)
-                                .into(ivProductDetailImageView)
 
-                            true
-                        } else {
-                            index = if (index == 0) product.images.size - 1 else index - 1
-                            Log.e("index", index.toString())
-                            Log.e(
-                                "product_image_url",
-                                BASE_IMAGE_URL + product.images.get(index).image
-                            )
-                            Glide.with(currentView)
-                                .load(BASE_IMAGE_URL + product.images.get(index).image)
-                                .into(ivProductDetailImageView)
-                            true
-
-                        }
-
-                    }
-                    false
-                }
+                val adapter = ProductDetailImageAdapter(currentView, product.images)
+                vpProductDetailImageView.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                vpProductDetailImageView.adapter = adapter
 
                 var cart = cartDao.getCartItemByProductId(product.product_id.toInt())
                 if (cart != null && cart!!.count > 0) {

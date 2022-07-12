@@ -32,7 +32,6 @@ class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView, Products
     lateinit var subCategoryList: ArrayList<Subcategory>
     lateinit var subCategoryAdapter: SubCategoryAdapter
     lateinit var productList: ArrayList<Product>
-    lateinit var productAdapter: ProductsAdapter
     lateinit var currentView: View
 
     override fun onCreateView(
@@ -72,7 +71,7 @@ class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView, Products
                 Log.e("subCategoryList", "${subCategoryList}")
                 subCategoryAdapter = SubCategoryAdapter(this, subCategoryList)
                 currentView.findViewById<RecyclerView>(R.id.rv_sub_category).layoutManager =
-                    GridLayoutManager(currentView.context, 2)
+                    LinearLayoutManager(currentView.context, LinearLayoutManager.HORIZONTAL, false)
                 currentView.findViewById<RecyclerView>(R.id.rv_sub_category).adapter =
                     subCategoryAdapter
                 productsPresenter =
@@ -98,11 +97,12 @@ class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView, Products
         productsResponse?.let {
             productList = productsResponse.products
             currentView?.let {
-                Log.e("productList", "${productList}")
-                productAdapter = ProductsAdapter(currentView.context, productList)
-                currentView.findViewById<RecyclerView>(R.id.rv_products).layoutManager =
-                    LinearLayoutManager(currentView.context)
-                currentView.findViewById<RecyclerView>(R.id.rv_products).adapter = productAdapter
+
+                val productsFragment = ProductsFragment(productList, 0)
+                requireActivity().supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.gl_sub_category_products_fragment, productsFragment)
+                    .commit()
             }
         }
     }

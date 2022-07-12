@@ -7,7 +7,7 @@
 
     <HorizontalScrollView
         android:id="@+id/hsv_sub_rategory"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,11 +25,11 @@
             tools:listitem="@layout/view_sub_category" />
     </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_products"
+    <FrameLayout
+        android:id="@+id/gl_sub_category_products_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10dp"
         app:layout_constraintTop_toBottomOf="@id/hsv_sub_rategory"
-        tools:listitem="@layout/view_products" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

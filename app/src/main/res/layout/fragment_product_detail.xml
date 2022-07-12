@@ -46,13 +46,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_product_detail_name" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_product_detail_image_view"
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_product_detail_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_marginVertical="15dp"
-                android:src="@drawable/ic_baseline_shopping_cart_24"
-
+                android:layoutDirection="ltr"
+                android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/tv_product_detail_description" />
 
 
@@ -64,7 +64,7 @@
                 android:textColor="@color/orange"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_image_view" />
+                app:layout_constraintTop_toBottomOf="@id/vp_product_detail_image_view" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_product_detail_add_to_cart"

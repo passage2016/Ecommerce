@@ -25,4 +25,21 @@ class ProductsPresenter(
             })
         return message
     }
+
+    override fun searchProducts(query: String): String {
+        productsView.onLoad(true)
+        val message = volleyHandler.searchProductsFromApi(query,
+            object : OperationalCallback {
+                override fun onSuccess(data: Any) {
+                    productsView.onLoad(false)
+                    productsView.setResult(data as ProductsResponse)
+                }
+
+                override fun onFailure(message: String) {
+                    productsView.onLoad(false)
+                    productsView.setResult(null)
+                }
+            })
+        return message
+    }
 }
