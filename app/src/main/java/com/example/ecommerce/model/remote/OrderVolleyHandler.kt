@@ -39,6 +39,7 @@ class OrderVolleyHandler(private val context: Context) {
         var message: String? = null
         val gson = Gson()
         val data = JSONObject(gson.toJson(placeOrderRequest))
+        Log.e("order", data.toString())
         val request = JsonObjectRequest(Request.Method.POST, url, data,
             { response: JSONObject ->
                 message = response.getString("message")

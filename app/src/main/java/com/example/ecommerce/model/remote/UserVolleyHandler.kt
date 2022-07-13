@@ -80,4 +80,31 @@ class UserVolleyHandler(private val context: Context) {
         requestQueue.add(request)
         return message.toString()
     }
+
+    fun logoutUser(email: String, callback: OperationalCallback): String {
+        val url = BASE_URL + LOGIN_END_POINT
+        val data = JSONObject()
+        var message: String? = null
+
+        data.put("email_id", email)
+
+        val request = JsonObjectRequest(Request.Method.POST, url, data,
+            { response: JSONObject ->
+                message = response.getString("message")
+                Log.i("tag", message.toString())
+                val status = response.getInt("status")
+                Log.e("tag", "message is $message")
+                if (status == 0) {
+                    callback.onSuccess(message.toString())
+                } else {
+                    callback.onFailure(message.toString())
+                }
+            }, { error: VolleyError ->
+                error.printStackTrace()
+                Log.i("tag", "${error.printStackTrace()}")
+                callback.onFailure(message.toString())
+            })
+        requestQueue.add(request)
+        return message.toString()
+    }
 }

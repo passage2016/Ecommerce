@@ -101,7 +101,7 @@
         android:id="@+id/tv_register_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/i_don_t_have_an_account"
+        android:text="@string/i_have_an_account"
         android:textColor="@color/orange"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

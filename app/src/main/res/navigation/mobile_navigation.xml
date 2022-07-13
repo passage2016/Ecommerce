@@ -79,7 +79,7 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/place_order_action"
-            app:destination="@+id/choose_address_dest"
+            app:destination="@+id/checkout_dest"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -87,24 +87,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/choose_address_dest"
-        android:name="com.example.ecommerce.view.cart.ChooseAddressFragment"
+        android:id="@+id/checkout_dest"
+        android:name="com.example.ecommerce.view.cart.CheckoutFragment"
         android:label="Order"
-        tools:layout="@layout/fragment_choose_address">
-        <action
-            android:id="@+id/choose_payment_action"
-            app:destination="@+id/choose_payment_dest"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/choose_payment_dest"
-        android:name="com.example.ecommerce.view.cart.ChoosePaymentFragment"
-        android:label="Order"
-        tools:layout="@layout/fragment_choose_payment">
+        tools:layout="@layout/fragment_checkout">
         <action
             android:id="@+id/finish_order_action"
             app:destination="@+id/cart_dest"
@@ -112,14 +98,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <argument
-            android:name="address_title"
-            android:defaultValue="default address itle"
-            app:argType="string" />
-        <argument
-            android:name="address_address"
-            android:defaultValue="default address address"
-            app:argType="string" />
     </fragment>
 
     <fragment
@@ -145,35 +123,6 @@
             android:name="order_id"
             android:defaultValue="1"
             app:argType="string" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/address_dest"
-        android:name="com.example.ecommerce.view.address.AddressFragment"
-        android:label="Address"
-        tools:layout="@layout/fragment_address">
-
-        <action
-            android:id="@+id/add_address_action"
-            app:destination="@+id/add_address_dest"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/add_address_dest"
-        android:name="com.example.ecommerce.view.address.AddAddressFragment"
-        android:label="Address"
-        tools:layout="@layout/fragment_add_address">
-        <action
-            android:id="@+id/address_dest"
-            app:destination="@+id/address_dest"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
 

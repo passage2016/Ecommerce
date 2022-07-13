@@ -18,11 +18,6 @@
             android:title="Order"
             app:showAsAction="always" />
         <item
-            android:id="@+id/address_dest"
-            android:icon="@drawable/ic_baseline_address_24"
-            android:title="Address"
-            app:showAsAction="always" />
-        <item
             android:id="@+id/mi_logout"
             android:icon="@drawable/ic_baseline_logout_24"
             android:title="Logout"

@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
         android:gravity="center"
-        android:text="Please Choose Payment Method"
-        android:textColor="@color/orange"
+        android:text="Select Payment Option"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,37 +20,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="10dp"
         android:checkedButton="@id/rbtn_cod"
+        android:layoutDirection="rtl"
+
         app:layout_constraintTop_toBottomOf="@id/tv_choose_payment_title">
 
         <RadioButton
             android:id="@+id/rbtn_cod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="COD" />
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_category_card"
+            android:button="@drawable/selector_check_circle_outline_24"
+            android:text="Cash On Deliver" >
+        </RadioButton>
 
         <RadioButton
-            android:id="@+id/rbtn_paypol"
+            android:id="@+id/rbtn_internet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="paypal" />
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_category_card"
+            android:button="@drawable/selector_check_circle_outline_24"
+            android:text="Internet Backing" />
 
         <RadioButton
             android:id="@+id/rbtn_bank_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bank Card" />
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_category_card"
+            android:button="@drawable/selector_check_circle_outline_24"
+            android:text="Debil Card/ Credit Card" />
+
+        <RadioButton
+            android:id="@+id/rbtn_paypal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_category_card"
+            android:button="@drawable/selector_check_circle_outline_24"
+            android:text="Paypal" />
 
     </RadioGroup>
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_finish_order"
+        android:id="@+id/btn_payment_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
         android:background="@drawable/shape_button"
-        android:text="Confirm"
+        android:text="Next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rg_choose_payment" />

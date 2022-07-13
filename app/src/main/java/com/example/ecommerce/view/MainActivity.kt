@@ -20,15 +20,21 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
+import com.example.ecommerce.model.remote.UserVolleyHandler
+import com.example.ecommerce.presenter.login.LoginMVP
+import com.example.ecommerce.presenter.login.LoginPresenter
+import com.example.ecommerce.presenter.logout.LogoutMVP
+import com.example.ecommerce.presenter.logout.LogoutPresenter
 import com.google.android.material.navigation.NavigationView
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LogoutMVP.LogoutView {
 
     lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
     lateinit var drawerLayout: DrawerLayout
+    lateinit var presenter: LogoutPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,14 +46,20 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
         drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
 
+        sharedPreferences = getSharedPreferences(LoginActivity.ACCOUNT_INFO_FILE_NAME, MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+        presenter = LogoutPresenter(UserVolleyHandler(this), this)
 
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
 
         navigationView.setNavigationItemSelectedListener{ menuItem->
             when(menuItem.itemId){
                 R.id.mi_logout->{
-                    val intent: Intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
+                    val email = sharedPreferences.getString(LoginActivity.EMAIL, "-1")
+                    email?.let {
+                        presenter.logoutUser(email)
+                    }
+
                 }
                 else -> {
                     menuItem.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
@@ -66,8 +78,7 @@ class MainActivity : AppCompatActivity() {
         val tvNavHeaderEmail: TextView = navView.findViewById(R.id.tv_nav_header_email)
         val tvNavHeaderPhone: TextView = navView.findViewById(R.id.tv_nav_header_phone)
 
-        sharedPreferences = getSharedPreferences(LoginActivity.ACCOUNT_INFO_FILE_NAME, MODE_PRIVATE)
-        editor = sharedPreferences.edit()
+
         tvNavHeaderName.text =sharedPreferences.getString(LoginActivity.NAME, LoginActivity.NAME)
         tvNavHeaderEmail.text =sharedPreferences.getString(LoginActivity.EMAIL, LoginActivity.EMAIL)
         tvNavHeaderPhone.text =sharedPreferences.getString(LoginActivity.PHONE, LoginActivity.PHONE)
@@ -78,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         val navController = host.navController
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home_dest, R.id.cart_dest, R.id.order_dest, R.id.address_dest),
+            setOf(R.id.home_dest, R.id.cart_dest, R.id.order_dest),
             drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -110,6 +121,14 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         drawerLayout.closeDrawer(GravityCompat.START)
         return findNavController(R.id.my_nav_host_fragment).navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun setResult(message: String) {
+        val intent: Intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onLoad(isLoading: Boolean) {
     }
 
 }
