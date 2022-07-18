@@ -1,36 +1,31 @@
 package com.example.ecommerce.view.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navOptions
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.ecommerce.R
 import com.example.ecommerce.model.remote.ProductsVolleyHandler
 import com.example.ecommerce.model.remote.SubCategoryVolleyHandler
 import com.example.ecommerce.model.remote.data.products.Product
-import com.example.ecommerce.model.remote.data.products.ProductsResponse
 import com.example.ecommerce.model.remote.data.subCategory.SubCategoryResponse
 import com.example.ecommerce.model.remote.data.subCategory.Subcategory
-import com.example.ecommerce.presenter.products.ProductsMVP
 import com.example.ecommerce.presenter.products.ProductsPresenter
 import com.example.ecommerce.presenter.subCategory.SubCategoryMVP
 import com.example.ecommerce.presenter.subCategory.SubCategoryPresenter
+import com.google.android.material.tabs.TabLayoutMediator
 
-class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView, ProductsMVP.ProductsView {
+class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView {
     private val args: SubCategoryFragmentArgs by navArgs()
     lateinit var categoryID: String
     lateinit var subCategoryID: String
     private lateinit var subCategoryPresenter: SubCategoryPresenter
     private lateinit var productsPresenter: ProductsPresenter
     lateinit var subCategoryList: ArrayList<Subcategory>
-    lateinit var subCategoryAdapter: SubCategoryAdapter
     lateinit var productList: ArrayList<Product>
     lateinit var currentView: View
 
@@ -52,61 +47,25 @@ class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView, Products
         subCategoryPresenter.getSubCategory(categoryID)
 
 
-        val options = navOptions {
-            anim {
-                enter = R.anim.slide_in_right
-                exit = R.anim.slide_out_left
-                popEnter = R.anim.slide_in_left
-                popExit = R.anim.slide_out_right
-            }
-        }
-
     }
 
     override fun setResult(subCategoryResponse: SubCategoryResponse?) {
 
         subCategoryResponse?.let {
             subCategoryList = subCategoryResponse.subcategories
-            currentView?.let {
-                Log.e("subCategoryList", "${subCategoryList}")
-                subCategoryAdapter = SubCategoryAdapter(this, subCategoryList)
-                currentView.findViewById<RecyclerView>(R.id.rv_sub_category).layoutManager =
-                    LinearLayoutManager(currentView.context, LinearLayoutManager.HORIZONTAL, false)
-                currentView.findViewById<RecyclerView>(R.id.rv_sub_category).adapter =
-                    subCategoryAdapter
-                productsPresenter =
-                    ProductsPresenter(ProductsVolleyHandler(currentView.context), this)
-                if (subCategoryList.size > 0) {
-                    subCategoryID = subCategoryList.get(0).subcategory_id
-                    productsPresenter.getProducts(subCategoryID)
-                }
+                val adapter = SubCategoryViewPagerAdapter(this, subCategoryList)
+                currentView.findViewById<ViewPager2>(R.id.vp_sub_category).adapter = adapter
+                TabLayoutMediator(
+                    currentView.findViewById(R.id.tl_sub_category),
+                    currentView.findViewById(R.id.vp_sub_category)
+                ) { tab, position ->
+                    tab.text = subCategoryList[position].subcategory_name
+                }.attach()
 
             }
         }
-
-
-    }
-
-    fun setSubCategoryId(subCategoryId: String) {
-        productsPresenter = ProductsPresenter(ProductsVolleyHandler(currentView.context), this)
-        subCategoryID = subCategoryId
-        productsPresenter.getProducts(subCategoryID)
-    }
-
-    override fun setResult(productsResponse: ProductsResponse?) {
-        productsResponse?.let {
-            productList = productsResponse.products
-            currentView?.let {
-
-                val productsFragment = ProductsFragment(productList, 0)
-                requireActivity().supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.gl_sub_category_products_fragment, productsFragment)
-                    .commit()
-            }
-        }
-    }
 
     override fun onLoad(isLoading: Boolean) {
     }
+
 }

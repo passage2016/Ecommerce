@@ -46,25 +46,25 @@ class OrderDetailFragment : Fragment(), GetOrderDetailMVP.GetOrderDetailView {
             val order = orderDetailResponse.order
             currentView?.let {
                 Log.e("order", "${order}")
-                val tvOrderDetailAddressTitle: TextView =
-                    currentView.findViewById(R.id.tv_order_detail_address_title)
-                val tvOrderDetailAddress: TextView =
-                    currentView.findViewById(R.id.tv_order_detail_address)
-                val tvOrderDetailBillAmount: TextView =
-                    currentView.findViewById(R.id.tv_order_detail_bill_amount)
-                val tvOrderDetailPaymentMethod: TextView =
-                    currentView.findViewById(R.id.tv_order_detail_payment_method)
-                val tvOrderDetailStatus: TextView =
-                    currentView.findViewById(R.id.tv_order_detail_status)
-                val tvOrderDetailDate: TextView =
-                    currentView.findViewById(R.id.tv_order_detail_date)
+                val tvOrderDetailId: TextView =
+                    currentView.findViewById(R.id.tv_order_detail_id)
+                val tvOrderDetailState: TextView =
+                    currentView.findViewById(R.id.tv_order_detail_state)
+                val tvOrderDetailTotalAmount: TextView =
+                    currentView.findViewById(R.id.tv_order_detail_total_amount)
+                val tvOrderDetailDeliveryAddressTitleInfo: TextView =
+                    currentView.findViewById(R.id.tv_order_detail_delivery_address_title_info)
+                val tvOrderDetailDeliveryAddressAddressInfo: TextView =
+                    currentView.findViewById(R.id.tv_order_detail_delivery_address_address_info)
+                val tvOrderDetailPaymentInfo: TextView =
+                    currentView.findViewById(R.id.tv_order_detail_payment_info)
 
-                tvOrderDetailAddressTitle.text = order.address_title
-                tvOrderDetailAddress.text = order.address
-                tvOrderDetailBillAmount.text = order.bill_amount
-                tvOrderDetailPaymentMethod.text = order.payment_method
-                tvOrderDetailStatus.text = order.order_status
-                tvOrderDetailDate.text = order.order_date
+                tvOrderDetailDeliveryAddressTitleInfo.text = order.address_title
+                tvOrderDetailDeliveryAddressAddressInfo.text = order.address
+                tvOrderDetailTotalAmount.text = order.bill_amount
+                tvOrderDetailPaymentInfo.text = order.payment_method
+                tvOrderDetailState.text = order.order_status
+                tvOrderDetailId.text = "#"+order.order_id
 
             }
         }

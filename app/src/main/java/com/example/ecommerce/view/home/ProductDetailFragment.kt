@@ -94,7 +94,6 @@ class ProductDetailFragment : Fragment(), ProductDetailMVP.ProductDetailView {
                 rbProductDetail.rating = product.average_rating.toFloat()
                 tvProductDetailDescription.text = product.description
                 tvProductDetailPrice.text = "${product.price}"
-                Log.e("product_image_url", BASE_IMAGE_URL + product.images.get(index).image)
 
                 val adapter = ProductDetailImageAdapter(currentView, product.images)
                 vpProductDetailImageView.orientation = ViewPager2.ORIENTATION_HORIZONTAL

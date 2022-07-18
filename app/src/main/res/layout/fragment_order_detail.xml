@@ -2,53 +2,148 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_order_detail_address_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="address_title"
+        android:text="Order ID"
+        android:textSize="20sp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_order_detail_address"
+        android:id="@+id/tv_order_detail_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="address"
+        android:text="Order ID"
+        android:textSize="20sp"
+        android:textColor="@color/orange"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_address_title" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_order_detail_bill_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="bill_amount"
+        android:text="Order Status"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_address" />
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_id"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_order_detail_payment_method"
+        android:id="@+id/tv_order_detail_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="payment_method"
+        android:text="Order Status"
+        android:textSize="16sp"
+        android:textColor="@color/orange"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_bill_amount" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_id"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_order_detail_status"
+        android:id="@+id/tv_order_detail_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="order_status"
+        android:text="Purchaes Items"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_payment_method" />
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_state"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_order_detail_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_title"
+        tools:itemCount="2"
+        tools:listitem="@layout/view_cart_sample" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_order_detail_date"
+        android:id="@+id/tv_order_detail_total_bill_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="order_date"
+        android:text="Total Bill Amount"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_status" />
+        app:layout_constraintTop_toBottomOf="@id/rv_order_detail_item" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_order_detail_total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textColor="@color/orange"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_order_detail_item" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_order_detail_delivery_address_top_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delivery Address"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_total_amount" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_order_detail_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_category_card"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_detail_delivery_address_top_title">
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_order_detail_delivery_address_title_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_order_detail_delivery_address_address_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_detail_delivery_address_title_info" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_order_detail_payment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Option"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_order_detail_address" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_order_detail_payment_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Option"
+        app:layout_constraintStart_toEndOf="@id/tv_order_detail_payment_title"
+        app:layout_constraintTop_toBottomOf="@id/cl_order_detail_address" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_order_detail_item_place_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_button"
+        android:text="Confirm &amp; Place Order"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
