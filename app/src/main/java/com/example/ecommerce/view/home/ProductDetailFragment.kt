@@ -22,6 +22,7 @@ import com.example.ecommerce.model.remote.data.productDetail.ProductDetailRespon
 import com.example.ecommerce.model.remote.data.productDetail.Specification
 import com.example.ecommerce.presenter.productDetail.ProductDetailMVP
 import com.example.ecommerce.presenter.productDetail.ProductDetailPresenter
+import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.learning.mvpregistrationapp.model.remote.Constants.BASE_IMAGE_URL
 
 
@@ -169,5 +170,10 @@ class ProductDetailFragment : Fragment(), ProductDetailMVP.ProductDetailView {
     }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
     }
 }

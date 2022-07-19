@@ -26,6 +26,7 @@ import com.example.ecommerce.view.LoginActivity
 import com.example.ecommerce.view.cart.CheckoutDeliverFragment.Companion.ADDRESS_ADDRESS
 import com.example.ecommerce.view.cart.CheckoutDeliverFragment.Companion.ADDRESS_TITLE
 import com.example.ecommerce.view.cart.CheckoutPaymentFragment.Companion.PAYMENT
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class CheckoutSummaryFragment : Fragment(), PlaceOrderMVP.PlaceOrderView {
     lateinit var adapter: CheckoutCartItemAdapter
@@ -135,5 +136,10 @@ class CheckoutSummaryFragment : Fragment(), PlaceOrderMVP.PlaceOrderView {
     }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
     }
 }

@@ -13,6 +13,7 @@ import com.example.ecommerce.model.remote.OrderVolleyHandler
 import com.example.ecommerce.model.remote.data.orderDetail.OrderDetailResponse
 import com.example.ecommerce.presenter.getOrderDetail.GetOrderDetailMVP
 import com.example.ecommerce.presenter.getOrderDetail.GetOrderDetailPresenter
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class OrderDetailFragment : Fragment(), GetOrderDetailMVP.GetOrderDetailView {
     private val args: OrderDetailFragmentArgs by navArgs()
@@ -73,5 +74,10 @@ class OrderDetailFragment : Fragment(), GetOrderDetailMVP.GetOrderDetailView {
     }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
     }
 }

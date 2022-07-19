@@ -31,11 +31,6 @@ class CheckoutCartItemFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_checkout_cart_item, container, false)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-//        communicator = context as Communicator
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         currentView = view

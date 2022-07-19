@@ -14,6 +14,7 @@ import com.example.ecommerce.model.remote.data.category.Category
 import com.example.ecommerce.model.remote.data.category.CategoryResponse
 import com.example.ecommerce.presenter.category.CategoryMVP
 import com.example.ecommerce.presenter.category.CategoryPresenter
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class HomeFragment : Fragment(), CategoryMVP.CategoryView {
     private lateinit var presenter: CategoryPresenter
@@ -69,5 +70,11 @@ class HomeFragment : Fragment(), CategoryMVP.CategoryView {
     }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
+
     }
 }

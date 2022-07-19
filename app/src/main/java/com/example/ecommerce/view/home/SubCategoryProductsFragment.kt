@@ -13,6 +13,7 @@ import com.example.ecommerce.model.remote.data.products.Product
 import com.example.ecommerce.model.remote.data.products.ProductsResponse
 import com.example.ecommerce.presenter.products.ProductsMVP
 import com.example.ecommerce.presenter.products.ProductsPresenter
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class SubCategoryProductsFragment(val subCategoryId: String) : Fragment(),
     ProductsMVP.ProductsView {
@@ -50,5 +51,10 @@ class SubCategoryProductsFragment(val subCategoryId: String) : Fragment(),
     }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
     }
 }

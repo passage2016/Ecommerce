@@ -17,6 +17,7 @@ import com.example.ecommerce.model.remote.data.subCategory.Subcategory
 import com.example.ecommerce.presenter.products.ProductsPresenter
 import com.example.ecommerce.presenter.subCategory.SubCategoryMVP
 import com.example.ecommerce.presenter.subCategory.SubCategoryPresenter
+import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.tabs.TabLayoutMediator
 
 class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView {
@@ -66,6 +67,11 @@ class SubCategoryFragment : Fragment(), SubCategoryMVP.SubCategoryView {
         }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
     }
 
 }

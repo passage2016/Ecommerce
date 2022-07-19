@@ -29,9 +29,6 @@ class ChooseAddresseAdapter(private val context: Context, val infoArrayList: Arr
 
             itemView.setOnClickListener {
                 Log.e("address_id", "${info.address_id}")
-//                val action =
-//                    ChooseAddressFragmentDirections.choosePaymentAction(info.title, info.address)
-//                it.findNavController().navigate(action)
             }
 
         }

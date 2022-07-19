@@ -18,6 +18,7 @@ import com.example.ecommerce.model.remote.data.order.OrderResponse
 import com.example.ecommerce.presenter.getOrder.GetOrderMVP
 import com.example.ecommerce.presenter.getOrder.GetOrderPresenter
 import com.example.ecommerce.view.LoginActivity
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class OrderFragment : Fragment(), GetOrderMVP.GetOrderView {
     lateinit var adapter: OrderAdapter
@@ -65,5 +66,10 @@ class OrderFragment : Fragment(), GetOrderMVP.GetOrderView {
     }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
     }
 }

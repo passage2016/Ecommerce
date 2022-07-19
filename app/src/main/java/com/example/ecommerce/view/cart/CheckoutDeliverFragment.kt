@@ -26,6 +26,7 @@ import com.example.ecommerce.presenter.getAddress.GetAddressPresenter
 import com.example.ecommerce.view.LoginActivity
 import com.example.ecommerce.view.LoginActivity.Companion.ACCOUNT_INFO_FILE_NAME
 import com.example.ecommerce.view.LoginActivity.Companion.USER_ID
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class CheckoutDeliverFragment : Fragment(), GetAddressMVP.GetAddressView, AddAddressMVP.AddAddressView {
 
@@ -164,12 +165,6 @@ class CheckoutDeliverFragment : Fragment(), GetAddressMVP.GetAddressView, AddAdd
                     rgChooseAddress.check(radioButton.id)
                 }
             }
-
-//                adapter = ChooseAddresseAdapter(currentView.context, categoryList)
-//                currentView.findViewById<RecyclerView>(R.id.rv_choose_address).layoutManager =
-//                    LinearLayoutManager(currentView.context)
-//                currentView.findViewById<RecyclerView>(R.id.rv_choose_address).adapter = adapter
-
         }
 
 
@@ -183,6 +178,11 @@ class CheckoutDeliverFragment : Fragment(), GetAddressMVP.GetAddressView, AddAdd
     }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            requireActivity().findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
     }
 
     companion object {

@@ -26,6 +26,7 @@ import com.example.ecommerce.presenter.login.LoginPresenter
 import com.example.ecommerce.presenter.logout.LogoutMVP
 import com.example.ecommerce.presenter.logout.LogoutPresenter
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 
 class MainActivity : AppCompatActivity(), LogoutMVP.LogoutView {
@@ -129,6 +130,11 @@ class MainActivity : AppCompatActivity(), LogoutMVP.LogoutView {
     }
 
     override fun onLoad(isLoading: Boolean) {
+        if(isLoading){
+            findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.VISIBLE
+        } else {
+            findViewById<CircularProgressIndicator>(R.id.circularProgressBar)?.visibility = View.GONE
+        }
     }
 
 }
