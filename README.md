@@ -15,6 +15,13 @@ The app in itself is a simple shopping app. Clicking the product list item it sh
 - Buy products.
 
 ## 📸 Screenshots
+<img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Register.png" height="600" width="300" hspace="40">
+<img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Login.png" height="600" width="300" hspace="40">
+<img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Home.png" height="600" width="300" hspace="40">
+<img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Products.png" height="600" width="300" hspace="40">
+<img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/ProductDetail.png" height="600" width="300" hspace="40">
+<img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Cart.png" height="600" width="300" hspace="40">
+<img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/PlaceOrder.png" height="600" width="300" hspace="40">
 
 **Please click the image below to enlarge.**
 
@@ -35,15 +42,14 @@ The app in itself is a simple shopping app. Clicking the product list item it sh
     .
     ├── data                # For data handling.
     │   ├── model           # Model classes
-    │   ├── network         # Remote Data Handlers     
     |   │   ├── api         # Retrofit API for remote end point.
+    |   |
+    |   ├── presenter       # Presenter
     |
     |
     ├── ui                  # Activity/View layer
     │   ├── main            # Main Screen Activity & ViewModel
-    |   │   ├── adapter     # Adapter for RecyclerView
-    |   │   ├── viewmodel   # ViewHolder for RecyclerView   
-    │   └── details         # Detail Screen Activity and ViewModel
+    |   │   ├── adapter     # Adapter for RecyclerView 
 
 ## Architecture
 This app uses [***MVP (Model View PRESENTER)***](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) architecture.
