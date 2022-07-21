@@ -15,6 +15,8 @@ The app in itself is a simple shopping app. Clicking the product list item it sh
 - Buy products.
 
 ## 📸 Screenshots
+
+**Please click the image below to enlarge.**
 <img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Register.png" height="600" width="300" hspace="40">
 <img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Login.png" height="600" width="300" hspace="40">
 <img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Home.png" height="600" width="300" hspace="40">
@@ -23,14 +25,11 @@ The app in itself is a simple shopping app. Clicking the product list item it sh
 <img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Cart.png" height="600" width="300" hspace="40">
 <img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/PlaceOrder.png" height="600" width="300" hspace="40">
 
-**Please click the image below to enlarge.**
 
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
-- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
-- [Koin](https://insert-koin.io) - Dependency Injection Framework
 - [GSON](https://github.com/google/gson) - A Java serialization/deserialization library to convert Java Objects into JSON and back.
 - [GSON Converter](https://github.com/square/retrofit/tree/master/retrofit-converters/gson) - A Converter which uses Gson for serialization to and from JSON.
 - [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling.
