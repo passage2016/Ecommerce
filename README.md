@@ -17,6 +17,7 @@ The app in itself is a simple shopping app. Clicking the product list item it sh
 ## 📸 Screenshots
 
 **Please click the image below to enlarge.**
+<br>
 <img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Register.png" height="600" width="300" hspace="40">
 <img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Login.png" height="600" width="300" hspace="40">
 <img src="https://github.com/passage2016/Ecommerce/blob/main/screenshots/Home.png" height="600" width="300" hspace="40">
