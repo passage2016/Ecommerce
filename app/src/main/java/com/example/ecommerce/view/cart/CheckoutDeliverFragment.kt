@@ -150,7 +150,9 @@ class CheckoutDeliverFragment : Fragment(), GetAddressMVP.GetAddressView, AddAdd
                     RadioGroup.LayoutParams.WRAP_CONTENT
                 )
                 lp.setMargins(10, 10, 10, 10)
+
                 radioButton.layoutParams = lp
+                radioButton.setPadding(10, 5, 10, 5)
                 radioButton.setBackgroundResource(R.drawable.shape_category_card)
                 radioButton.setButtonDrawable(R.drawable.selector_check_circle_outline_24)
                 val spannableString: SpannableString = SpannableString(addressList.get(i).title)
